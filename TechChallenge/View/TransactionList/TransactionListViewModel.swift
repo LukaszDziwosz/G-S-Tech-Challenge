@@ -20,6 +20,7 @@ final class TransactionListViewModel: ObservableObject {
     
    func sortTransactions() {
         let transactions: [TransactionModel] = ModelData.sampleTransactions
+
         self.transactions = transactions.sorted(by: {$0.date.compare($1.date) == .orderedAscending})
     }
     

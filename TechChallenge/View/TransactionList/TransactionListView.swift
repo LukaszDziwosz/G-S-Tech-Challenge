@@ -21,6 +21,7 @@ struct TransactionListView: View {
             }
             .animation(.easeIn)
             .listStyle(PlainListStyle())
+            FloatingView()
             
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -47,6 +48,9 @@ struct TransactionListView: View {
         .background(Color.accentColor)
         .opacity(0.8)
     }
+//    func makeFloatingView() -> some View {
+//      
+//    }
 }
 
 
