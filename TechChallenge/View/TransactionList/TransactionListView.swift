@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct TransactionListView: View {
-    let transactions: [TransactionModel] = ModelData.sampleTransactions
+    
+    @ObservedObject var viewModel = TransactionListViewModel()
+   
     let categories = TransactionModel.Category.allCases
     
     var body: some View {
         VStack {
             makeCategoryView()
             List {
-                ForEach(transactions) { transaction in
+                ForEach(viewModel.filteredTransactions) { transaction in
                     TransactionView(transaction: transaction)
                 }
             }
