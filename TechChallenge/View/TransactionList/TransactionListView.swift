@@ -10,34 +10,33 @@ import SwiftUI
 struct TransactionListView: View {
     
     @ObservedObject var viewModel = TransactionListViewModel()
-   
-    let categories = TransactionModel.Category.allCases
     
     var body: some View {
         VStack {
             makeCategoryView()
             List {
-                ForEach(viewModel.filteredTransactions) { transaction in
+                ForEach(viewModel.transactions) { transaction in
                     TransactionView(transaction: transaction)
                 }
             }
             .animation(.easeIn)
             .listStyle(PlainListStyle())
             
-        }.navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Transactions")
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Transactions")
     }
     func makeCategoryView() -> some View {
         ScrollView(.horizontal) {
             HStack {
                 Button{
-                    print("tapped")
+                    viewModel.sortTransactions()
                     }label: {
                         RoundButtonView(color: .black, title: "all")
                     }
-                ForEach(categories) { category in
+                ForEach(viewModel.categories) { category in
                     Button{
-                        print("tapped")
+                        viewModel.filterTransactions(category: category)
                         }label: {
                             RoundButtonView(color: category.color, title: category.rawValue)
                         }
