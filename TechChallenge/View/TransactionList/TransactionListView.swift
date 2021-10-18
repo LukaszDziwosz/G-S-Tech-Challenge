@@ -21,20 +21,18 @@ struct TransactionListView: View {
             }
             .animation(.easeIn)
             .listStyle(PlainListStyle())
-            FloatingView()
+            FloatingView(color: viewModel.categories[viewModel.categoryIndex].color,
+                         sum: viewModel.transactions.sum(\.amount).formatted(),
+                         title: viewModel.categories[viewModel.categoryIndex].rawValue)
             
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Transactions")
     }
+    
     func makeCategoryView() -> some View {
         ScrollView(.horizontal) {
             HStack {
-                Button{
-                    viewModel.sortTransactions()
-                    }label: {
-                        RoundButtonView(color: .black, title: "all")
-                    }
                 ForEach(viewModel.categories) { category in
                     Button{
                         viewModel.filterTransactions(category: category)
@@ -48,9 +46,7 @@ struct TransactionListView: View {
         .background(Color.accentColor)
         .opacity(0.8)
     }
-//    func makeFloatingView() -> some View {
-//      
-//    }
+
 }
 
 

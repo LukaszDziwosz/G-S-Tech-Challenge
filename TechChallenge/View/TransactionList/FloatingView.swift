@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct FloatingView: View {
-    var body: some View {
+    var color: Color
+    var sum: String
+    var title: String
+    
+        var body: some View {
         HStack {
             VStack{
                 Spacer()
@@ -20,12 +24,12 @@ struct FloatingView: View {
             Spacer()
             
             VStack(alignment: .trailing) {
-                Text("food")
+                Text(title)
                     .font(.headline)
-                    .foregroundColor(.black)
+                    .foregroundColor(color)
                 Spacer()
                 
-                Text("$200.00")
+                Text("$\(sum)")
                     .fontWeight(.bold)
                     .secondary()
                 
@@ -42,6 +46,6 @@ struct FloatingView: View {
 
 struct FloatingView_Previews: PreviewProvider {
     static var previews: some View {
-        FloatingView()
+        FloatingView(color: .black, sum: "200.00", title: "all")
     }
 }

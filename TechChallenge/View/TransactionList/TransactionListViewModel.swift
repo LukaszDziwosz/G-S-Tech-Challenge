@@ -7,11 +7,14 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 final class TransactionListViewModel: ObservableObject {
     
     @Published var transactions: [TransactionModel] = []
+    @Published var categoryIndex: Int = 0
     private var subscriptions = Set<AnyCancellable>()
+    
     let categories = TransactionModel.Category.allCases
     
     init(){
@@ -26,14 +29,18 @@ final class TransactionListViewModel: ObservableObject {
     
     func filterTransactions(category: TransactionModel.Category) {
         sortTransactions()
-        var filteredTransactions: [TransactionModel] = []
+        categoryIndex = categories.firstIndex(of: category) ?? 0
         
+        if categoryIndex != 0 {
+        var filteredTransactions: [TransactionModel] = []
         $transactions
             .map { $0.filter { $0.category == category} }
             .sink(receiveValue: { filteredTransactions  = $0 })
             .store(in: &subscriptions)
         
         self.transactions = filteredTransactions
-
+        }
+    
     }
+    
 }

@@ -26,6 +26,7 @@
 		3CE226C126B062BA00B3D085 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE226C026B062BA00B3D085 /* Double.swift */; };
 		3CE226C726B2E41E00B3D085 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE226C626B2E41E00B3D085 /* InsightsView.swift */; };
 		D04BAB5D271CBA0D00160004 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BAB5C271CBA0D00160004 /* FloatingView.swift */; };
+		D04BAB5F271DD11D00160004 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BAB5E271DD11D00160004 /* Sequence.swift */; };
 		D0838999271B30FD0071DB2A /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0838998271B30FD0071DB2A /* TransactionListViewModel.swift */; };
 		D0BBE4DA271B00DF00404ECA /* RoundButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BBE4D9271B00DE00404ECA /* RoundButtonView.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		3CE226C026B062BA00B3D085 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		3CE226C626B2E41E00B3D085 /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
 		D04BAB5C271CBA0D00160004 /* FloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
+		D04BAB5E271DD11D00160004 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		D0838998271B30FD0071DB2A /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		D0BBE4D9271B00DE00404ECA /* RoundButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +195,7 @@
 				3CE01C6326B2EBDE0091B7BA /* Color.swift */,
 				3C296ECE26B31193006DF667 /* Angle.swift */,
 				3C296ED026B404A5006DF667 /* Path.swift */,
+				D04BAB5E271DD11D00160004 /* Sequence.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				3CE226BF26B05EB100B3D085 /* ViewModifiers.swift in Sources */,
 				D0838999271B30FD0071DB2A /* TransactionListViewModel.swift in Sources */,
 				D04BAB5D271CBA0D00160004 /* FloatingView.swift in Sources */,
+				D04BAB5F271DD11D00160004 /* Sequence.swift in Sources */,
 				D0BBE4DA271B00DF00404ECA /* RoundButtonView.swift in Sources */,
 				3C296ECF26B31193006DF667 /* Angle.swift in Sources */,
 				3C3FCAAD26C57A7D0092AB11 /* TransactionModel+UI.swift in Sources */,

@@ -23,6 +23,8 @@ extension TransactionModel {
 extension TransactionModel.Category {
     var color: Color {
         switch self {
+        case.all:
+            return .black
         case .food:
             return .green
         case .health:

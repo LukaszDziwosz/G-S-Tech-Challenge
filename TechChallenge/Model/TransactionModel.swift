@@ -11,6 +11,7 @@ import Foundation
 
 struct TransactionModel {
     enum Category: String, CaseIterable {
+        case all
         case food
         case health
         case entertainment
