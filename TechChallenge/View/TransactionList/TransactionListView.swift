@@ -12,23 +12,24 @@ struct TransactionListView: View {
     @ObservedObject var viewModel = TransactionListViewModel()
     
     var body: some View {
-        VStack {
-            makeCategoryView()
-            List {
-                ForEach(viewModel.transactions) { transaction in
-                    TransactionView(transaction: transaction)
+            VStack {
+                makeCategoryView()
+                List {
+                    ForEach(viewModel.transactions) { transaction in
+                        TransactionView(transaction: transaction)
+                    }
                 }
+                .animation(.easeIn)
+                .listStyle(PlainListStyle())
+                FloatingView(color: viewModel.categories[viewModel.categoryIndex].color,
+                             sum: viewModel.transactions.sum(\.amount).formatted(),
+                             title: viewModel.categories[viewModel.categoryIndex].rawValue)
+                
             }
-            .animation(.easeIn)
-            .listStyle(PlainListStyle())
-            FloatingView(color: viewModel.categories[viewModel.categoryIndex].color,
-                         sum: viewModel.transactions.sum(\.amount).formatted(),
-                         title: viewModel.categories[viewModel.categoryIndex].rawValue)
-            
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Transactions")
+            .navigationTitle("Transactions")
+            .navigationBarTitleDisplayMode(.inline)
     }
+        
     
     func makeCategoryView() -> some View {
         ScrollView(.horizontal) {

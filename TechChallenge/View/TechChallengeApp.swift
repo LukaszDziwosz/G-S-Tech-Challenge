@@ -26,7 +26,7 @@ struct TechChallengeApp: App {
                 .tabItem {
                     Label("Insights", systemImage: "chart.pie.fill")
                 }
-            }
+            }.navigationViewStyle(StackNavigationViewStyle()) // that took away that nasty constrains warning ;)
         }
     }
 }
