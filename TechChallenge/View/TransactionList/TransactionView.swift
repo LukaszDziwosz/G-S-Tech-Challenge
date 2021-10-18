@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TransactionView: View {
     let transaction: TransactionModel
+    let isNotExpanded: Bool
     
     var body: some View {
         VStack {
@@ -17,8 +18,13 @@ struct TransactionView: View {
                     .font(.headline)
                     .foregroundColor(transaction.category.color)
                 Spacer()
+                if isNotExpanded {
+                Image(systemName: "pin.slash.fill")
+                } else {
+                Image(systemName: "pin.fill")
+                }
             }
-            
+            if !isNotExpanded {
             HStack {
                 transaction.image
                     .resizable()
@@ -45,6 +51,7 @@ struct TransactionView: View {
                         .tertiary()
                 }
             }
+          }
         }
         .padding(8.0)
         .background(Color.accentColor.opacity(0.1))
@@ -56,8 +63,8 @@ struct TransactionView: View {
 struct TransactionView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TransactionView(transaction: ModelData.sampleTransactions[0])
-            TransactionView(transaction: ModelData.sampleTransactions[1])
+            TransactionView(transaction: ModelData.sampleTransactions[0], isNotExpanded: true)
+            TransactionView(transaction: ModelData.sampleTransactions[1], isNotExpanded: false)
         }
         .padding()
         .previewLayout(.sizeThatFits)

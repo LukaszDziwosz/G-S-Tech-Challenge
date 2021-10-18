@@ -10,19 +10,26 @@ import SwiftUI
 struct TransactionListView: View {
     
     @ObservedObject var viewModel = TransactionListViewModel()
+    @State private var selection: Set<TransactionModel> = []
     
     var body: some View {
             VStack {
                 makeCategoryView()
-                List {
+                ScrollView {
                     ForEach(viewModel.transactions) { transaction in
-                        TransactionView(transaction: transaction)
+                        TransactionView(transaction: transaction, isNotExpanded: self.selection.contains(transaction)
+                            )
+                            .onTapGesture {
+                                self.selectDeselect(transaction)
+                            }
+                            .modifier(ListRowModifier())
+                            .animation(.linear(duration: 0.2))
                     }
                 }
                 .animation(.easeIn)
-                .listStyle(PlainListStyle())
+
                 FloatingView(color: viewModel.categories[viewModel.categoryIndex].color,
-                             sum: viewModel.transactions.sum(\.amount).formatted(),
+                             sum: (viewModel.transactions.sum(\.amount) - selection.sum(\.amount)).formatted(),
                              title: viewModel.categories[viewModel.categoryIndex].rawValue)
                 
             }
@@ -47,7 +54,23 @@ struct TransactionListView: View {
         .background(Color.accentColor)
         .opacity(0.8)
     }
+    
+    private func selectDeselect(_ transaction: TransactionModel) {
+            if selection.contains(transaction) {
+                selection.remove(transaction)
+            } else {
+                selection.insert(transaction)
+            }
+        }
 
+}
+struct ListRowModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        Group {
+            content
+            Divider()
+        }
+    }
 }
 
 

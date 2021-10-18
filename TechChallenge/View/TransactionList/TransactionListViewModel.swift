@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import SwiftUI
+
 
 final class TransactionListViewModel: ObservableObject {
     
@@ -42,5 +42,13 @@ final class TransactionListViewModel: ObservableObject {
         }
     
     }
+    
+//   func selectDeselect(_ transaction: TransactionModel) {
+//       if self.transactions.contains(transaction) {
+//           self.transactions.remove(transaction)
+//            } else {
+//                self.transactions.insert(transaction)
+//            }
+//        }
     
 }
