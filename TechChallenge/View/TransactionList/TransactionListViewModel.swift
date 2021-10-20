@@ -53,7 +53,7 @@ final class TransactionListViewModel: ObservableObject {
                 selection.insert(transaction)
             }
         }
-    //WIP 
+    //WIP will use Combine to update InsightView and take away selected this is just
     func categoryExpense(category: TransactionModel.Category) -> Double {
         let total = transactions.reduce(0.0) { result, transaction in
             if (transaction.category == category){
@@ -62,7 +62,7 @@ final class TransactionListViewModel: ObservableObject {
                 return result + 0.0
                 }
         }
-        return total
+        return total 
     }
     
 }
