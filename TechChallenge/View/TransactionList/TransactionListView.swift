@@ -10,17 +10,16 @@ import SwiftUI
 struct TransactionListView: View {
     
     @ObservedObject var viewModel = TransactionListViewModel()
-    @State private var selection: Set<TransactionModel> = []
     
     var body: some View {
             VStack {
                 makeCategoryView()
                 ScrollView {
                     ForEach(viewModel.transactions) { transaction in
-                        TransactionView(transaction: transaction, isNotExpanded: self.selection.contains(transaction)
+                        TransactionView(transaction: transaction, isNotExpanded: viewModel.selection.contains(transaction)
                             )
                             .onTapGesture {
-                                self.selectDeselect(transaction)
+                                viewModel.selectDeselect(transaction)
                             }
                             .modifier(ListRowModifier())
                             .animation(.linear(duration: 0.2))
@@ -28,9 +27,9 @@ struct TransactionListView: View {
                 }
                 .animation(.easeIn)
 
-                FloatingView(color: viewModel.categories[viewModel.categoryIndex].color,
-                             sum: (viewModel.transactions.sum(\.amount) - selection.sum(\.amount)).formatted(),
-                             title: viewModel.categories[viewModel.categoryIndex].rawValue)
+                FloatingView(color: viewModel.allCategories[viewModel.categoryIndex].color,
+                             sum: (viewModel.transactions.sum(\.amount) - viewModel.selection.sum(\.amount)).formatted(),
+                             title: viewModel.allCategories[viewModel.categoryIndex].rawValue)
                 
             }
             .navigationTitle("Transactions")
@@ -41,7 +40,7 @@ struct TransactionListView: View {
     func makeCategoryView() -> some View {
         ScrollView(.horizontal) {
             HStack {
-                ForEach(viewModel.categories) { category in
+                ForEach(viewModel.allCategories) { category in
                     Button{
                         viewModel.filterTransactions(category: category)
                         }label: {
@@ -55,13 +54,7 @@ struct TransactionListView: View {
         .opacity(0.8)
     }
     
-    private func selectDeselect(_ transaction: TransactionModel) {
-            if selection.contains(transaction) {
-                selection.remove(transaction)
-            } else {
-                selection.insert(transaction)
-            }
-        }
+
 
 }
 struct ListRowModifier: ViewModifier {

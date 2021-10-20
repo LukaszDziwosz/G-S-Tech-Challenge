@@ -141,9 +141,9 @@
 			children = (
 				3CE226B826B0548C00B3D085 /* TransactionView.swift */,
 				3CE226B426B0523C00B3D085 /* TransactionListView.swift */,
+				D0838998271B30FD0071DB2A /* TransactionListViewModel.swift */,
 				D04BAB5C271CBA0D00160004 /* FloatingView.swift */,
 				D0BBE4D9271B00DE00404ECA /* RoundButtonView.swift */,
-				D0838998271B30FD0071DB2A /* TransactionListViewModel.swift */,
 			);
 			path = TransactionList;
 			sourceTree = "<group>";

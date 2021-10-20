@@ -52,6 +52,13 @@ extension TransactionModel.Category: Identifiable {
         rawValue
     }
 }
+//public extension CaseIterable where Self: Equatable {
+//
+//    func index() -> Self.AllCases.Index {
+//        return Self.allCases.firstIndex(of: self)!
+//    }
+//
+//}
 
 extension TransactionModel.Category {
     static subscript(index: Int) -> Self? {

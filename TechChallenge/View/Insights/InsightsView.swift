@@ -8,21 +8,24 @@
 import SwiftUI
 
 struct InsightsView: View {
-    let transactions: [TransactionModel] = ModelData.sampleTransactions
-    
+
+    @ObservedObject var viewModel = TransactionListViewModel()
+    // uses same data source so I decided on 1 view model for 2 views
     var body: some View {
         List {
-            RingView(transactions: transactions)
+            RingView(transactions: viewModel.transactions)
                 .scaledToFit()
             
-            ForEach(TransactionModel.Category.allCases) { category in
+            ForEach(viewModel.categories) { category in
                 HStack {
                     Text(category.rawValue)
                         .font(.headline)
                         .foregroundColor(category.color)
                     Spacer()
                     // TODO: calculate cummulative expense for each category
-                    Text("$0.0")
+                    // WIP 
+                    let cummulative = viewModel.categoryExpense(category: category)
+                    Text("$\(cummulative.formatted())")
                         .bold()
                         .secondary()
                 }
